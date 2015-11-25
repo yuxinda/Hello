@@ -4,27 +4,30 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.GregorianCalendar;
 import java.util.*;
-/**
- * Created by vmware on 11/16/2015.
- */
+
 public class CourseSession {
-    static int count;
+    private static int count;
     private ArrayList<Student> students = new ArrayList<>();
 
 
     private String department;
     private String number;
     private Date startDate;
+    private int numberOfCredits;
 
 
-
-    public CourseSession(String department, String number, Date startDate) {
+    private CourseSession(String department, String number, Date startDate) {
         this.department = department;
         this.number = number;
         this.startDate = startDate;
-        CourseSession.count = CourseSession.count + 1;
     }
-
+    public static CourseSession create(String department, String number, Date startDate) {
+        CourseSession.incrementCount();
+        return new CourseSession(department, number, startDate);
+    }
+    void setNumberOfCredits(int numberOfCredits) {
+        this.numberOfCredits = numberOfCredits;
+    }
     public Date getEndDate() {
         GregorianCalendar calendar = new GregorianCalendar();
         calendar.setTime(startDate);
@@ -62,7 +65,17 @@ public class CourseSession {
     }
 
     public void enroll(Student student) {
+        student.addCredits(numberOfCredits);
         students.add(student);
+    }
+    static int getCount() {
+        return count;
+    }
+    static void resetCount() {
+        CourseSession.count = 0;
+    }
+    static void incrementCount() {
+        CourseSession.count++;
     }
 
 }
