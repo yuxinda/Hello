@@ -44,7 +44,7 @@ public class CourseSessionTest extends TestCase {
     }
 
     public void testCount() {
-//        CourseSession.count = 0;
+        CourseSession.count = 0;
         createCourseSession();
         assertEquals(1, CourseSession.count);
         createCourseSession();
