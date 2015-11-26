@@ -2,22 +2,27 @@ package chess;
 
 import junit.framework.TestCase;
 import chess.pieces.Pawn;
+import util.StringUtil;
 
-/**
- * Created by vmware on 15/11/19.
- */
+
 public class BoardTest extends TestCase {
     private Board board;
-    final String pawnColor1 = "White";
-    final String pawnColor2 = "Black";
 
-    public void setUp() {
+    protected void setUp() {
         board = new Board();
     }
     public void testCreate() {
         board.initialize();
-        assertEquals(16, board.getPawnNumber());
-
+        assertEquals(32, board.pieceCount());
+        String blankRank = StringUtil.appendNewLine("........");
+        assertEquals(
+                StringUtil.appendNewLine("RNBQKBNR") +
+                StringUtil.appendNewLine("PPPPPPPP") +
+                blankRank + blankRank + blankRank + blankRank +
+                StringUtil.appendNewLine("pppppppp") +
+                StringUtil.appendNewLine("rnbqkbnr"),
+                board.print()
+        );
     }
 
     /*

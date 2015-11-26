@@ -4,18 +4,16 @@ import chess.pieces.Pawn;
 
 import java.util.ArrayList;
 
-/**
- * Created by vmware on 15/11/19.
- */
+
 public class Board {
-    private int pawnNumber;
+    private int pieceNumber;
     private ArrayList<Pawn> pawnList2;
     private ArrayList<Pawn> pawnList7;
 
 
 
     Board() {
-        pawnNumber = 0;
+        pieceNumber = 0;
     }
 
     public void initialize(){
@@ -46,10 +44,10 @@ public class Board {
         pawnNumber+= 16;
 
     }
-    public int getPawnNumber() {
-        return pawnNumber;
-    }
 
+    public int pieceCount() {
+        return this.pieceNumber;
+    }
     public ArrayList<Pawn> getList2Pawn() {
         return pawnList2;
     }
